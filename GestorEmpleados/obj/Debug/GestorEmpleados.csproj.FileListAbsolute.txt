@@ -1,0 +1,11 @@
+C:\Users\luis_\OneDrive\Documentos\C#\GestorEmpleados\GestorEmpleados\bin\Debug\GestorEmpleados.exe.config
+C:\Users\luis_\OneDrive\Documentos\C#\GestorEmpleados\GestorEmpleados\bin\Debug\GestorEmpleados.exe
+C:\Users\luis_\OneDrive\Documentos\C#\GestorEmpleados\GestorEmpleados\bin\Debug\GestorEmpleados.pdb
+C:\Users\luis_\OneDrive\Documentos\C#\GestorEmpleados\GestorEmpleados\obj\Debug\GestorEmpleados.csproj.AssemblyReference.cache
+C:\Users\luis_\OneDrive\Documentos\C#\GestorEmpleados\GestorEmpleados\obj\Debug\GestorEmpleados.csproj.SuggestedBindingRedirects.cache
+C:\Users\luis_\OneDrive\Documentos\C#\GestorEmpleados\GestorEmpleados\obj\Debug\GestorEmpleados.Form1.resources
+C:\Users\luis_\OneDrive\Documentos\C#\GestorEmpleados\GestorEmpleados\obj\Debug\GestorEmpleados.Properties.Resources.resources
+C:\Users\luis_\OneDrive\Documentos\C#\GestorEmpleados\GestorEmpleados\obj\Debug\GestorEmpleados.csproj.GenerateResource.cache
+C:\Users\luis_\OneDrive\Documentos\C#\GestorEmpleados\GestorEmpleados\obj\Debug\GestorEmpleados.csproj.CoreCompileInputs.cache
+C:\Users\luis_\OneDrive\Documentos\C#\GestorEmpleados\GestorEmpleados\obj\Debug\GestorEmpleados.exe
+C:\Users\luis_\OneDrive\Documentos\C#\GestorEmpleados\GestorEmpleados\obj\Debug\GestorEmpleados.pdb
