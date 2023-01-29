@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GestorEmpleados.PL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,9 @@ namespace GestorEmpleados
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Form1 main = new Form1();//modificar el main de esta manera para que no se cierre la aplicación al usar .close()
+            main.Show();
+            Application.Run();
         }
     }
 }

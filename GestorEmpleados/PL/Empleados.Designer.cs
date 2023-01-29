@@ -56,13 +56,16 @@
             // 
             // tbId
             // 
+            this.tbId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.tbId.Location = new System.Drawing.Point(217, 43);
+            this.tbId.MaxLength = 10;
             this.tbId.Name = "tbId";
             this.tbId.Size = new System.Drawing.Size(100, 20);
             this.tbId.TabIndex = 2;
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(214, 26);
             this.label1.Name = "label1";
@@ -72,13 +75,16 @@
             // 
             // tbNombre
             // 
+            this.tbNombre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.tbNombre.Location = new System.Drawing.Point(362, 43);
+            this.tbNombre.MaxLength = 50;
             this.tbNombre.Name = "tbNombre";
             this.tbNombre.Size = new System.Drawing.Size(377, 20);
             this.tbNombre.TabIndex = 4;
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(214, 79);
             this.label2.Name = "label2";
@@ -88,20 +94,25 @@
             // 
             // tbApellidoP
             // 
+            this.tbApellidoP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.tbApellidoP.Location = new System.Drawing.Point(217, 95);
+            this.tbApellidoP.MaxLength = 50;
             this.tbApellidoP.Name = "tbApellidoP";
             this.tbApellidoP.Size = new System.Drawing.Size(229, 20);
             this.tbApellidoP.TabIndex = 6;
             // 
             // tbApellidoM
             // 
+            this.tbApellidoM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.tbApellidoM.Location = new System.Drawing.Point(471, 95);
+            this.tbApellidoM.MaxLength = 50;
             this.tbApellidoM.Name = "tbApellidoM";
             this.tbApellidoM.Size = new System.Drawing.Size(268, 20);
             this.tbApellidoM.TabIndex = 8;
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(468, 79);
             this.label3.Name = "label3";
@@ -111,13 +122,16 @@
             // 
             // tbCorreo
             // 
+            this.tbCorreo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.tbCorreo.Location = new System.Drawing.Point(217, 145);
+            this.tbCorreo.MaxLength = 50;
             this.tbCorreo.Name = "tbCorreo";
             this.tbCorreo.Size = new System.Drawing.Size(229, 20);
             this.tbCorreo.TabIndex = 10;
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(214, 129);
             this.label4.Name = "label4";
@@ -127,6 +141,7 @@
             // 
             // label5
             // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(468, 129);
             this.label5.Name = "label5";
@@ -136,6 +151,7 @@
             // 
             // cbDepartamento
             // 
+            this.cbDepartamento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbDepartamento.FormattingEnabled = true;
             this.cbDepartamento.Location = new System.Drawing.Point(471, 143);
             this.cbDepartamento.Name = "cbDepartamento";
@@ -154,6 +170,7 @@
             // 
             // bGuardar
             // 
+            this.bGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.bGuardar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bGuardar.Location = new System.Drawing.Point(217, 198);
             this.bGuardar.Name = "bGuardar";
@@ -164,6 +181,7 @@
             // 
             // bEditar
             // 
+            this.bEditar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.bEditar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bEditar.Location = new System.Drawing.Point(313, 198);
             this.bEditar.Name = "bEditar";
@@ -174,6 +192,7 @@
             // 
             // bEliminar
             // 
+            this.bEliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.bEliminar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bEliminar.Location = new System.Drawing.Point(413, 198);
             this.bEliminar.Name = "bEliminar";
@@ -184,6 +203,7 @@
             // 
             // bCancelar
             // 
+            this.bCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.bCancelar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bCancelar.Location = new System.Drawing.Point(512, 198);
             this.bCancelar.Name = "bCancelar";
@@ -194,6 +214,9 @@
             // 
             // TablaContenido
             // 
+            this.TablaContenido.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.TablaContenido.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.TablaContenido.Location = new System.Drawing.Point(25, 246);
             this.TablaContenido.Name = "TablaContenido";
@@ -210,16 +233,18 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Image = global::GestorEmpleados.Properties.Resources.Trabajos;
-            this.pictureBox1.Location = new System.Drawing.Point(-2, -1);
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(801, 451);
+            this.pictureBox1.Size = new System.Drawing.Size(800, 450);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
             // bRegresar
             // 
+            this.bRegresar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.bRegresar.Font = new System.Drawing.Font("Marlett", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bRegresar.Location = new System.Drawing.Point(726, -1);
             this.bRegresar.Name = "bRegresar";
@@ -227,9 +252,11 @@
             this.bRegresar.TabIndex = 19;
             this.bRegresar.Text = "Regresar";
             this.bRegresar.UseVisualStyleBackColor = true;
+            this.bRegresar.Click += new System.EventHandler(this.bRegresar_Click);
             // 
             // label6
             // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(359, 26);
             this.label6.Name = "label6";
@@ -242,6 +269,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ControlBox = false;
             this.Controls.Add(this.label6);
             this.Controls.Add(this.bRegresar);
             this.Controls.Add(this.TablaContenido);
@@ -264,6 +292,7 @@
             this.Controls.Add(this.FotoEmpleado);
             this.Controls.Add(this.pictureBox1);
             this.Name = "Empleados";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Empleados";
             ((System.ComponentModel.ISupportInitialize)(this.TablaContenido)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FotoEmpleado)).EndInit();
