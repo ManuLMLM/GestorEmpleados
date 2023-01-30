@@ -149,6 +149,12 @@
       <DependentUpon>BaseDeDatos.edmx</DependentUpon>
       <LastGenOutput>BaseDeDatos.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\BotonEditar.png" />
+    <None Include="Resources\BotonBorrar.png" />
+    <None Include="Resources\BotonCancel.png" />
+    <None Include="Resources\BotonApagar.png" />
+    <None Include="Resources\BotonHome.png" />
+    <None Include="Resources\BotonGuardar.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\empresa.jpg" />

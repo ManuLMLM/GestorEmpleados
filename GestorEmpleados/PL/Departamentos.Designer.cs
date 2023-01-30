@@ -28,31 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tbNombre = new System.Windows.Forms.TextBox();
-            this.bGuardar = new System.Windows.Forms.Button();
-            this.bEditar = new System.Windows.Forms.Button();
-            this.bEliminar = new System.Windows.Forms.Button();
-            this.bCancelar = new System.Windows.Forms.Button();
             this.TablaContenido = new System.Windows.Forms.DataGridView();
-            this.bRegresar = new System.Windows.Forms.Button();
             this.cmId = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.bEditar = new System.Windows.Forms.PictureBox();
+            this.bGuardar = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.bEliminar = new System.Windows.Forms.PictureBox();
+            this.bCancelar = new System.Windows.Forms.PictureBox();
+            this.bRegresar = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.TablaContenido)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bEditar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bGuardar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bEliminar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bCancelar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bRegresar)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = global::GestorEmpleados.Properties.Resources.Trabajos;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(483, 330);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // label1
             // 
@@ -83,60 +77,12 @@
             this.tbNombre.Size = new System.Drawing.Size(273, 20);
             this.tbNombre.TabIndex = 3;
             // 
-            // bGuardar
-            // 
-            this.bGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.bGuardar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bGuardar.Location = new System.Drawing.Point(56, 74);
-            this.bGuardar.Name = "bGuardar";
-            this.bGuardar.Size = new System.Drawing.Size(75, 23);
-            this.bGuardar.TabIndex = 5;
-            this.bGuardar.Text = "Guardar";
-            this.bGuardar.UseVisualStyleBackColor = true;
-            this.bGuardar.Click += new System.EventHandler(this.bGuardar_Click);
-            // 
-            // bEditar
-            // 
-            this.bEditar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.bEditar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bEditar.Location = new System.Drawing.Point(151, 74);
-            this.bEditar.Name = "bEditar";
-            this.bEditar.Size = new System.Drawing.Size(75, 23);
-            this.bEditar.TabIndex = 6;
-            this.bEditar.Text = "Editar";
-            this.bEditar.UseVisualStyleBackColor = true;
-            this.bEditar.Click += new System.EventHandler(this.bEditar_Click);
-            // 
-            // bEliminar
-            // 
-            this.bEliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.bEliminar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bEliminar.Location = new System.Drawing.Point(248, 74);
-            this.bEliminar.Name = "bEliminar";
-            this.bEliminar.Size = new System.Drawing.Size(75, 23);
-            this.bEliminar.TabIndex = 7;
-            this.bEliminar.Text = "Eliminar";
-            this.bEliminar.UseVisualStyleBackColor = true;
-            this.bEliminar.Click += new System.EventHandler(this.bEliminar_Click);
-            // 
-            // bCancelar
-            // 
-            this.bCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.bCancelar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bCancelar.Location = new System.Drawing.Point(345, 74);
-            this.bCancelar.Name = "bCancelar";
-            this.bCancelar.Size = new System.Drawing.Size(75, 23);
-            this.bCancelar.TabIndex = 8;
-            this.bCancelar.Text = "Cancelar";
-            this.bCancelar.UseVisualStyleBackColor = true;
-            this.bCancelar.Click += new System.EventHandler(this.bCancelar_Click);
-            // 
             // TablaContenido
             // 
             this.TablaContenido.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TablaContenido.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.TablaContenido.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.TablaContenido.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.TablaContenido.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.TablaContenido.Location = new System.Drawing.Point(12, 121);
@@ -145,22 +91,12 @@
             this.TablaContenido.ReadOnly = true;
             this.TablaContenido.Size = new System.Drawing.Size(459, 167);
             this.TablaContenido.TabIndex = 9;
-            // 
-            // bRegresar
-            // 
-            this.bRegresar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.bRegresar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bRegresar.Location = new System.Drawing.Point(396, 294);
-            this.bRegresar.Name = "bRegresar";
-            this.bRegresar.Size = new System.Drawing.Size(75, 23);
-            this.bRegresar.TabIndex = 10;
-            this.bRegresar.Text = "Regresar";
-            this.bRegresar.UseVisualStyleBackColor = true;
-            this.bRegresar.Click += new System.EventHandler(this.bRegresar_Click);
+            this.TablaContenido.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.TablaContenido_CellMouseClick);
             // 
             // cmId
             // 
             this.cmId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmId.FormattingEnabled = true;
             this.cmId.Location = new System.Drawing.Point(32, 38);
             this.cmId.Name = "cmId";
@@ -168,19 +104,90 @@
             this.cmId.TabIndex = 11;
             this.cmId.SelectedIndexChanged += new System.EventHandler(this.cmId_SelectedIndexChanged);
             // 
+            // bEditar
+            // 
+            this.bEditar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bEditar.Image = global::GestorEmpleados.Properties.Resources.BotonEditar;
+            this.bEditar.Location = new System.Drawing.Point(236, 80);
+            this.bEditar.Name = "bEditar";
+            this.bEditar.Size = new System.Drawing.Size(35, 35);
+            this.bEditar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.bEditar.TabIndex = 13;
+            this.bEditar.TabStop = false;
+            this.bEditar.Click += new System.EventHandler(this.bEditar_Click_1);
+            // 
+            // bGuardar
+            // 
+            this.bGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bGuardar.Image = global::GestorEmpleados.Properties.Resources.BotonGuardar;
+            this.bGuardar.Location = new System.Drawing.Point(176, 80);
+            this.bGuardar.Name = "bGuardar";
+            this.bGuardar.Size = new System.Drawing.Size(35, 35);
+            this.bGuardar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.bGuardar.TabIndex = 12;
+            this.bGuardar.TabStop = false;
+            this.bGuardar.Click += new System.EventHandler(this.bGuardar_Click_1);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Image = global::GestorEmpleados.Properties.Resources.Trabajos;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(483, 330);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // bEliminar
+            // 
+            this.bEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bEliminar.Image = global::GestorEmpleados.Properties.Resources.BotonBorrar;
+            this.bEliminar.Location = new System.Drawing.Point(296, 80);
+            this.bEliminar.Name = "bEliminar";
+            this.bEliminar.Size = new System.Drawing.Size(35, 35);
+            this.bEliminar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.bEliminar.TabIndex = 14;
+            this.bEliminar.TabStop = false;
+            this.bEliminar.Click += new System.EventHandler(this.bEliminar_Click_1);
+            // 
+            // bCancelar
+            // 
+            this.bCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bCancelar.Image = global::GestorEmpleados.Properties.Resources.BotonCancel;
+            this.bCancelar.Location = new System.Drawing.Point(356, 80);
+            this.bCancelar.Name = "bCancelar";
+            this.bCancelar.Size = new System.Drawing.Size(35, 35);
+            this.bCancelar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.bCancelar.TabIndex = 15;
+            this.bCancelar.TabStop = false;
+            this.bCancelar.Click += new System.EventHandler(this.bCancelar_Click_1);
+            // 
+            // bRegresar
+            // 
+            this.bRegresar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bRegresar.Image = global::GestorEmpleados.Properties.Resources.BotonHome;
+            this.bRegresar.Location = new System.Drawing.Point(448, 294);
+            this.bRegresar.Name = "bRegresar";
+            this.bRegresar.Size = new System.Drawing.Size(35, 35);
+            this.bRegresar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.bRegresar.TabIndex = 16;
+            this.bRegresar.TabStop = false;
+            this.bRegresar.Click += new System.EventHandler(this.bRegresar_Click_1);
+            // 
             // Departamentos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(483, 330);
             this.ControlBox = false;
-            this.Controls.Add(this.cmId);
             this.Controls.Add(this.bRegresar);
-            this.Controls.Add(this.TablaContenido);
             this.Controls.Add(this.bCancelar);
             this.Controls.Add(this.bEliminar);
             this.Controls.Add(this.bEditar);
             this.Controls.Add(this.bGuardar);
+            this.Controls.Add(this.cmId);
+            this.Controls.Add(this.TablaContenido);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tbNombre);
             this.Controls.Add(this.label1);
@@ -189,8 +196,13 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Departamentos";
             this.Load += new System.EventHandler(this.Departamentos_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TablaContenido)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bEditar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bGuardar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bEliminar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bCancelar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bRegresar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -202,12 +214,12 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tbNombre;
-        private System.Windows.Forms.Button bGuardar;
-        private System.Windows.Forms.Button bEditar;
-        private System.Windows.Forms.Button bEliminar;
-        private System.Windows.Forms.Button bCancelar;
         private System.Windows.Forms.DataGridView TablaContenido;
-        private System.Windows.Forms.Button bRegresar;
         private System.Windows.Forms.ComboBox cmId;
+        private System.Windows.Forms.PictureBox bGuardar;
+        private System.Windows.Forms.PictureBox bEditar;
+        private System.Windows.Forms.PictureBox bEliminar;
+        private System.Windows.Forms.PictureBox bCancelar;
+        private System.Windows.Forms.PictureBox bRegresar;
     }
 }

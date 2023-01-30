@@ -16,32 +16,36 @@ namespace GestorEmpleados.PL
 {
     public partial class Departamentos : Form
     {
-        
+        int comoborrar = 0;//apoyo para el método eliminar
         public Departamentos()
         {
             InitializeComponent();
+            //se les da el parametro de fondo de la imagen en lugar de la ventana
             label1.Parent = pictureBox1;
             label2.Parent = pictureBox1;
-
+            //cambio de color a transparente
             label1.BackColor = Color.Transparent;
             label2.BackColor = Color.Transparent;
         }
-
-        private void bGuardar_Click(object sender, EventArgs e)
+        //Método de guardar, editar y eliminar
+        private void bGuardar_Click_1(object sender, EventArgs e)
         {
-            if (tbNombre.Text !="" && cmId.Text == "") {
+            //Guardar departamento
+            if (tbNombre.Text != "" && cmId.Text == "")
+            {
                 using (GestionEmpleadosEntities1 db = new GestionEmpleadosEntities1())
                 {
                     var lista = new DAL.Departamentos();
                     lista.Departamento = tbNombre.Text;
-                        db.Departamentos.Add(lista);
-                    
+                    db.Departamentos.Add(lista);
+
                     db.SaveChanges();
                     RefrescarTabla();
 
                 }
             }
-            else if (bGuardar.Text =="Borrar")
+            //Borrar departamento
+            else if (comoborrar==1)
             {
                 using (GestionEmpleadosEntities1 db = new GestionEmpleadosEntities1())
                 {
@@ -52,9 +56,11 @@ namespace GestorEmpleados.PL
                     db.SaveChanges();
                     RefrescarTabla();
                     Limpieza();
+                    
                 }
             }
-            else if (bEditar.Enabled==false && tbNombre.Text!="")
+            //Editar departamento
+            else if (bEditar.Enabled == false && tbNombre.Text != "")
             {
                 using (GestionEmpleadosEntities1 db = new GestionEmpleadosEntities1())
                 {
@@ -73,19 +79,23 @@ namespace GestorEmpleados.PL
                     RefrescarTabla();
                     Limpieza();
 
-                }        
+                }
             }
+            //Mensaje de falta de contenido
             else
             {
                 MessageBox.Show("El campo Nombre está vacío");
             }
         }
-
+        //Carga de ventana
         private void Departamentos_Load(object sender, EventArgs e)
         {
             RefrescarTabla();
             cmId.Enabled = false;
+            TablaContenido.Columns[1].HeaderText = "Nombre de Departamento";
+            CargarComboBox();
         }
+        //Método para refrescar la tabla de contenido
         private void RefrescarTabla()
         {
             using (GestionEmpleadosEntities1 db = new GestionEmpleadosEntities1())
@@ -94,68 +104,95 @@ namespace GestorEmpleados.PL
                 TablaContenido.DataSource = ver.ToList();
             }
         }
-
-        private void bRegresar_Click(object sender, EventArgs e)
-        {
-            Form1 VentanaPrincipal = new Form1();
-            this.Close();
-            VentanaPrincipal.Show();
-        }
+        //Método para limpiar todo
         private void Limpieza()
         {
             tbNombre.Text = "";
-            cmId.Enabled = false;
             cmId.Text = "";
-            bGuardar.Enabled = true;
-            bEditar.Enabled = true;
-            bEliminar.Enabled = true;
-            bGuardar.Text = "Guardar";
-        }
-        private void bCancelar_Click(object sender, EventArgs e)
-        {
-            RefrescarTabla();
-            Limpieza();
-        }
+            cmId.Enabled = false;
+            
+            bGuardar.Image = global::GestorEmpleados.Properties.Resources.BotonGuardar;
+            bGuardar.Enabled = true;bGuardar.Visible= true;
+            bEditar.Enabled = true; bEditar.Visible = true;
+            bEliminar.Enabled = true; bEliminar.Visible = true;
+            comoborrar = 0; TablaContenido.ClearSelection();
 
+        }
+        //Botón del ComboBox del ID
         private void cmId_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(cmId.Text);
+            loadcombobox();
+        }
+        //Método para cargar el contenido del ComboBox ID a los campos
+        private void loadcombobox()
+        {
+            int id = int.Parse(cmId.Text);
             using (GestionEmpleadosEntities1 db = new GestionEmpleadosEntities1())
             {
                 var dato = from d in db.Departamentos where d.Id.Equals(id) select d.Departamento;
                 foreach (var item in dato)
                 {
                     tbNombre.Text = item.ToString();
-                    
                 }
-
             }
         }
-
-        private void bEditar_Click(object sender, EventArgs e)
+        //Evento de click a la tabla de contenido que carga los datos a tus campos
+        private void TablaContenido_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {           
+            int indice = e.RowIndex;
+            if (indice>=0)
+            {
+            cmId.Enabled = true;
+            bEditar.Enabled = false; bEditar.Visible = false;
+            bEliminar.Enabled = false; bEliminar.Visible = false;
+            cmId.Text= TablaContenido.Rows[indice].Cells[0].Value.ToString();
+            tbNombre.Text= TablaContenido.Rows[indice].Cells[1].Value.ToString();
+            }else TablaContenido.ClearSelection();
+        }
+        //Método para cargar el contenido al ComboBox del ID
+        public void CargarComboBox()
         {
             using (GestionEmpleadosEntities1 db = new GestionEmpleadosEntities1())
             {
                 var verid = from d in db.Departamentos select d.Id;
-                cmId.DataSource = verid.ToList(); 
-                
-            }
-            cmId.Enabled = true;
-            bEditar.Enabled = false;
-            bEliminar.Enabled = false;
-        }
+                cmId.DataSource = verid.ToList();
 
-        private void bEliminar_Click(object sender, EventArgs e)
+            }
+        }
+        //Evento Botón Editar
+        private void bEditar_Click_1(object sender, EventArgs e)
+        {
+            CargarComboBox();
+            cmId.Enabled = true;
+            bEditar.Enabled = false; bEditar.Visible = false;
+            bEliminar.Enabled = false;bEliminar.Visible = false;
+        }
+        //Evento Botón Eliminar
+        private void bEliminar_Click_1(object sender, EventArgs e)
         {
             using (GestionEmpleadosEntities1 db = new GestionEmpleadosEntities1())
             {
                 var verid = from d in db.Departamentos select d.Id;
                 cmId.DataSource = verid.ToList();
                 cmId.Enabled = true;
-                bEditar.Enabled = false;
-                bEliminar.Enabled = false;
-                bGuardar.Text = "Borrar";
+                bEditar.Enabled = false;bEditar.Visible = false;
+                bEliminar.Enabled = false;bEliminar.Visible = false;
+                bGuardar.Image = global::GestorEmpleados.Properties.Resources.BotonBorrar;
+                comoborrar = 1;
             }
+        }
+        //Evento Botón Cancelar, este reinicia toda la ventana a como estaba al abrirla
+        private void bCancelar_Click_1(object sender, EventArgs e)
+        {
+            RefrescarTabla();
+            Limpieza();           
+        }
+        //Botón para regresar a la ventana principal
+        private void bRegresar_Click_1(object sender, EventArgs e)
+        {
+            Form1 VentanaPrincipal = new Form1();
+            this.Close();
+            VentanaPrincipal.Show();
         }
     }
 }
