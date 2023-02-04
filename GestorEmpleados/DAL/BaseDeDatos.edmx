@@ -12,12 +12,6 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Departamento" Type="varchar" MaxLength="50" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6013: La tabla o vista 'GestionEmpleados.dbo.EmpleadoDepa' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
-        <EntityType Name="EmpleadoDepa">
-          <Property Name="IdDepa" Type="int" />
-          <Property Name="IdEmple" Type="int" />
-        </EntityType>-->
         <EntityType Name="Empleados">
           <Key>
             <PropertyRef Name="Id" />
@@ -28,16 +22,27 @@ advertencia 6013: La tabla o vista 'GestionEmpleados.dbo.EmpleadoDepa' no tiene 
           <Property Name="ApellidoMaterno" Type="varchar" MaxLength="50" />
           <Property Name="Correo" Type="varchar" MaxLength="50" />
           <Property Name="Foto" Type="image" />
+          <Property Name="IdDepartamento" Type="int" />
         </EntityType>
-        <!--Errores durante la generación:
-error 6004: Una relación hace referencia a la tabla 'GestionEmpleados.dbo.EmpleadoDepa', pero no se encuentra la tabla.
-        <Association Name="FK_EmpleadoDepa_Departamentos" />-->
-        <!--Errores durante la generación:
-error 6004: Una relación hace referencia a la tabla 'GestionEmpleados.dbo.EmpleadoDepa', pero no se encuentra la tabla.
-        <Association Name="FK_EmpleadoDepa_Empleados" />-->
+        <Association Name="FK_Empleados_Departamentos1">
+          <End Role="Departamentos" Type="Self.Departamentos" Multiplicity="0..1" />
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamentos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Empleados">
+              <PropertyRef Name="IdDepartamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="GestionEmpleadosModelStoreContainer">
           <EntitySet Name="Departamentos" EntityType="Self.Departamentos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Empleados" EntityType="Self.Empleados" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Empleados_Departamentos1" Association="Self.FK_Empleados_Departamentos1">
+            <End Role="Departamentos" EntitySet="Departamentos" />
+            <End Role="Empleados" EntitySet="Empleados" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
@@ -50,6 +55,7 @@ error 6004: Una relación hace referencia a la tabla 'GestionEmpleados.dbo.Emple
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Departamento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Empleados" Relationship="Self.FK_Empleados_Departamentos1" FromRole="Departamentos" ToRole="Empleados" />
         </EntityType>
         <EntityType Name="Empleados">
           <Key>
@@ -61,17 +67,35 @@ error 6004: Una relación hace referencia a la tabla 'GestionEmpleados.dbo.Emple
           <Property Name="ApellidoMaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Foto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="IdDepartamento" Type="Int32" />
+          <NavigationProperty Name="Departamentos" Relationship="Self.FK_Empleados_Departamentos1" FromRole="Empleados" ToRole="Departamentos" />
         </EntityType>
-        <EntityContainer Name="GestionEmpleadosEntities1" annotation:LazyLoadingEnabled="true">
+        <Association Name="FK_Empleados_Departamentos1">
+          <End Role="Departamentos" Type="Self.Departamentos" Multiplicity="0..1" />
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamentos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Empleados">
+              <PropertyRef Name="IdDepartamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GestionEmpleadosEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Departamentos" EntityType="Self.Departamentos" />
           <EntitySet Name="Empleados" EntityType="Self.Empleados" />
+          <AssociationSet Name="FK_Empleados_Departamentos1" Association="Self.FK_Empleados_Departamentos1">
+            <End Role="Departamentos" EntitySet="Departamentos" />
+            <End Role="Empleados" EntitySet="Empleados" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="GestionEmpleadosModelStoreContainer" CdmEntityContainer="GestionEmpleadosEntities1">
+        <EntityContainerMapping StorageEntityContainer="GestionEmpleadosModelStoreContainer" CdmEntityContainer="GestionEmpleadosEntities2">
           <EntitySetMapping Name="Departamentos">
             <EntityTypeMapping TypeName="GestionEmpleadosModel.Departamentos">
               <MappingFragment StoreEntitySet="Departamentos">
@@ -89,6 +113,7 @@ error 6004: Una relación hace referencia a la tabla 'GestionEmpleados.dbo.Emple
                 <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
                 <ScalarProperty Name="Correo" ColumnName="Correo" />
                 <ScalarProperty Name="Foto" ColumnName="Foto" />
+                <ScalarProperty Name="IdDepartamento" ColumnName="IdDepartamento" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

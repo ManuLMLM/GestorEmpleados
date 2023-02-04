@@ -6,6 +6,7 @@
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Departamento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Empleados" Relationship="Self.FK_Empleados_Departamentos1" FromRole="Departamentos" ToRole="Empleados" />
   </EntityType>
   <EntityType Name="Empleados">
     <Key>
@@ -17,9 +18,27 @@
     <Property Name="ApellidoMaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Foto" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="IdDepartamento" Type="Int32" />
+    <NavigationProperty Name="Departamentos" Relationship="Self.FK_Empleados_Departamentos1" FromRole="Empleados" ToRole="Departamentos" />
   </EntityType>
-  <EntityContainer Name="GestionEmpleadosEntities1" annotation:LazyLoadingEnabled="true">
+  <Association Name="FK_Empleados_Departamentos1">
+    <End Role="Departamentos" Type="Self.Departamentos" Multiplicity="0..1" />
+    <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departamentos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Empleados">
+        <PropertyRef Name="IdDepartamento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="GestionEmpleadosEntities2" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Departamentos" EntityType="Self.Departamentos" />
     <EntitySet Name="Empleados" EntityType="Self.Empleados" />
+    <AssociationSet Name="FK_Empleados_Departamentos1" Association="Self.FK_Empleados_Departamentos1">
+      <End Role="Departamentos" EntitySet="Departamentos" />
+      <End Role="Empleados" EntitySet="Empleados" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

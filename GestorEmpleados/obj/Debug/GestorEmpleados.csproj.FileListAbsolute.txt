@@ -10,9 +10,9 @@ C:\Users\luis_\OneDrive\Documentos\C#\GestorEmpleados\GestorEmpleados\obj\Debug\
 C:\Users\luis_\OneDrive\Documentos\C#\GestorEmpleados\GestorEmpleados\obj\Debug\GestorEmpleados.exe
 C:\Users\luis_\OneDrive\Documentos\C#\GestorEmpleados\GestorEmpleados\obj\Debug\GestorEmpleados.pdb
 C:\Users\luis_\OneDrive\Documentos\C#\GestorEmpleados\GestorEmpleados\obj\Debug\GestorEmpleados.PL.Departamentos.resources
-C:\Users\luis_\OneDrive\Documentos\C#\GestorEmpleados\GestorEmpleados\obj\Debug\GestorEmpleados.PL.Empleados.resources
 C:\Users\luis_\OneDrive\Documentos\C#\GestorEmpleados\GestorEmpleados\bin\Debug\EntityFramework.dll
 C:\Users\luis_\OneDrive\Documentos\C#\GestorEmpleados\GestorEmpleados\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\luis_\OneDrive\Documentos\C#\GestorEmpleados\GestorEmpleados\bin\Debug\EntityFramework.xml
 C:\Users\luis_\OneDrive\Documentos\C#\GestorEmpleados\GestorEmpleados\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\luis_\OneDrive\Documentos\C#\GestorEmpleados\GestorEmpleados\obj\Debug\GestorEmpleados.csproj.CopyComplete
+C:\Users\luis_\OneDrive\Documentos\C#\GestorEmpleados\GestorEmpleados\obj\Debug\GestorEmpleados.PL.VentanaEmpleados.resources

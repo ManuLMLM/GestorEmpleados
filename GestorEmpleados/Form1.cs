@@ -42,7 +42,7 @@ namespace GestorEmpleados
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            Empleados Ventanaempe = new Empleados();
+            VentanaEmpleados Ventanaempe = new VentanaEmpleados();
             this.Close();//Cerrar Ventana
             Ventanaempe.Show();
         }

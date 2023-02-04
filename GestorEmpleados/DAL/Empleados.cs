@@ -20,5 +20,8 @@ namespace GestorEmpleados.DAL
         public string ApellidoMaterno { get; set; }
         public string Correo { get; set; }
         public byte[] Foto { get; set; }
+        public Nullable<int> IdDepartamento { get; set; }
+    
+        public virtual Departamentos Departamentos { get; set; }
     }
 }

@@ -16,6 +16,7 @@ namespace GestorEmpleados.PL
 {
     public partial class Departamentos : Form
     {
+        int comoeditar = 0;
         int comoborrar = 0;//apoyo para el método eliminar
         public Departamentos()
         {
@@ -31,7 +32,7 @@ namespace GestorEmpleados.PL
         private void bGuardar_Click_1(object sender, EventArgs e)
         {
             //Guardar departamento
-            if (tbNombre.Text != "" && cmId.Text == "")
+            if (comoborrar ==0 && comoeditar ==0 && tbNombre.Text != "")
             {
                 using (GestionEmpleadosEntities1 db = new GestionEmpleadosEntities1())
                 {
@@ -41,7 +42,7 @@ namespace GestorEmpleados.PL
 
                     db.SaveChanges();
                     RefrescarTabla();
-
+                    Limpieza();
                 }
             }
             //Borrar departamento
@@ -56,11 +57,11 @@ namespace GestorEmpleados.PL
                     db.SaveChanges();
                     RefrescarTabla();
                     Limpieza();
-                    
+                    CargarComboBox();
                 }
             }
             //Editar departamento
-            else if (bEditar.Enabled == false && tbNombre.Text != "")
+            else if (comoeditar ==1 && tbNombre.Text != "")
             {
                 using (GestionEmpleadosEntities1 db = new GestionEmpleadosEntities1())
                 {
@@ -90,10 +91,14 @@ namespace GestorEmpleados.PL
         //Carga de ventana
         private void Departamentos_Load(object sender, EventArgs e)
         {
+            TablaContenido.ClearSelection();
             RefrescarTabla();
+            TablaContenido.ClearSelection();
+            tbNombre.Text = "";
             cmId.Enabled = false;
             TablaContenido.Columns[1].HeaderText = "Nombre de Departamento";
-            CargarComboBox();
+            
+            
         }
         //Método para refrescar la tabla de contenido
         private void RefrescarTabla()
@@ -103,6 +108,7 @@ namespace GestorEmpleados.PL
                 var ver = from d in db.Departamentos select d;
                 TablaContenido.DataSource = ver.ToList();
             }
+            
         }
         //Método para limpiar todo
         private void Limpieza()
@@ -115,7 +121,7 @@ namespace GestorEmpleados.PL
             bGuardar.Enabled = true;bGuardar.Visible= true;
             bEditar.Enabled = true; bEditar.Visible = true;
             bEliminar.Enabled = true; bEliminar.Visible = true;
-            comoborrar = 0; TablaContenido.ClearSelection();
+             TablaContenido.ClearSelection(); comoborrar = 0; comoeditar = 0;
 
         }
         //Botón del ComboBox del ID
@@ -140,14 +146,17 @@ namespace GestorEmpleados.PL
         private void TablaContenido_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {           
             int indice = e.RowIndex;
+            
+            cmId.Enabled = true;
+            CargarComboBox();
             if (indice>=0)
             {
-            cmId.Enabled = true;
             bEditar.Enabled = false; bEditar.Visible = false;
             bEliminar.Enabled = false; bEliminar.Visible = false;
             cmId.Text= TablaContenido.Rows[indice].Cells[0].Value.ToString();
             tbNombre.Text= TablaContenido.Rows[indice].Cells[1].Value.ToString();
             }else TablaContenido.ClearSelection();
+            comoeditar = 1; cmId.Enabled = false;
         }
         //Método para cargar el contenido al ComboBox del ID
         public void CargarComboBox()
@@ -162,8 +171,9 @@ namespace GestorEmpleados.PL
         //Evento Botón Editar
         private void bEditar_Click_1(object sender, EventArgs e)
         {
-            CargarComboBox();
+            comoeditar = 1;         
             cmId.Enabled = true;
+            CargarComboBox();
             bEditar.Enabled = false; bEditar.Visible = false;
             bEliminar.Enabled = false;bEliminar.Visible = false;
         }
@@ -178,7 +188,7 @@ namespace GestorEmpleados.PL
                 bEditar.Enabled = false;bEditar.Visible = false;
                 bEliminar.Enabled = false;bEliminar.Visible = false;
                 bGuardar.Image = global::GestorEmpleados.Properties.Resources.BotonBorrar;
-                comoborrar = 1;
+                comoborrar = 1;comoeditar = 1;
             }
         }
         //Evento Botón Cancelar, este reinicia toda la ventana a como estaba al abrirla

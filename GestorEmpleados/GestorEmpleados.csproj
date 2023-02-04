@@ -139,16 +139,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DAL\BaseDeDatos.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BaseDeDatos.edmx</DependentUpon>
-      <LastGenOutput>BaseDeDatos.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="DAL\BaseDeDatos.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BaseDeDatos.edmx</DependentUpon>
-      <LastGenOutput>BaseDeDatos.cs</LastGenOutput>
-    </Content>
+    <None Include="Resources\BuscarArchivo.png" />
     <None Include="Resources\BotonEditar.png" />
     <None Include="Resources\BotonBorrar.png" />
     <None Include="Resources\BotonCancel.png" />
@@ -170,6 +161,18 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DAL\BaseDeDatos.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BaseDeDatos.edmx</DependentUpon>
+      <LastGenOutput>BaseDeDatos.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DAL\BaseDeDatos.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BaseDeDatos.edmx</DependentUpon>
+      <LastGenOutput>BaseDeDatos.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
