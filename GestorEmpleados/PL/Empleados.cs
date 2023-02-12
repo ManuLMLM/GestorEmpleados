@@ -1,5 +1,6 @@
 ﻿using GestorEmpleados.DAL;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,8 +15,6 @@ namespace GestorEmpleados.PL
 {
     public partial class VentanaEmpleados : Form
     {
-        int AccionEditar = 0;
-        int AccionEliminar = 0;
         byte[] ImagenGuardada;
         public VentanaEmpleados()
         {
@@ -46,26 +45,27 @@ namespace GestorEmpleados.PL
         {
 
             if (tbNombre.Text!="" && tbApellidoP.Text!= "" && tbApellidoM.Text!=""
-                && tbCorreo.Text!="" && AccionEditar ==0 && AccionEliminar ==0)
+                && tbCorreo.Text!="" && ImagenGuardada != null)
             {
                 using (GestionEmpleadosEntities1 db = new GestionEmpleadosEntities1())
                 {
                     var lista = new DAL.Empleados();
-                    var dato = from d in db.Empleados
-                               select d;
-                    
+                    var depa = cbDepartamento.Text;
+                    var departamento = (from d in db.Departamentos
+                                       where d.Departamento == depa
+                                       select d.Id).FirstOrDefault();
                         lista.Nombre = tbNombre.Text;
                         lista.ApellidoPaterno=  tbApellidoP.Text;
                         lista.ApellidoMaterno= tbApellidoM.Text;
                         lista.Correo= tbCorreo.Text;
                         lista.Foto= ImagenGuardada;
-                        db.Empleados.Add(lista);
-                    
+                        lista.IdDepartamento = departamento;
                     db.Empleados.Add(lista);
                     db.SaveChanges();
                     Limpiar();
                     LlenarTabla();
-
+                    TablaContenido.ClearSelection();
+                    MessageBox.Show("Empleado Agregado");
                 }
             }
             else
@@ -76,12 +76,63 @@ namespace GestorEmpleados.PL
         //´Botón Editar
         private void bEditar_Click(object sender, EventArgs e)
         {
-            AccionEditar = 1;
+            if (MessageBox.Show("¿Desea editar los datos de este empleado?", "Confirmación", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                int id = Convert.ToInt32(tbId.Text);
+                var depa = cbDepartamento.Text;
+                using (GestionEmpleadosEntities1 db = new GestionEmpleadosEntities1())
+                {
+                    var empleado = db.Empleados.Find(id);
+                    var depaemple = (from d in db.Departamentos where d.Departamento == depa 
+                                     select d.Id).FirstOrDefault();
+                    var contenido = db.Empleados.Find(id);
+                    MemoryStream memoriafoto = new MemoryStream(contenido.Foto);//Guardar Contenido de la consulta de la foto
+                    if (ImagenGuardada == null)
+                    {
+                        ImagenGuardada = memoriafoto.ToArray();
+                    }
+                    empleado.Nombre= tbNombre.Text;
+                    empleado.ApellidoPaterno = tbApellidoP.Text;
+                    empleado.ApellidoMaterno = tbApellidoM.Text;
+                    empleado.Correo = tbCorreo.Text;
+                    empleado.Foto = ImagenGuardada;
+                    empleado.IdDepartamento = depaemple;
+                    db.SaveChanges();
+                    Limpiar();
+                    LlenarTabla();
+                    TablaContenido.ClearSelection();
+                }
+
+                MessageBox.Show("Se editó el Empleado");
+            }
+            else
+            {
+
+            }
+                
         }
         //Botón Eliminar
         private void bEliminar_Click(object sender, EventArgs e)
         {
-            AccionEliminar = 1;
+
+            if (MessageBox.Show("¿Desea eliminar el empleado?","Confirmación",MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                int id = int.Parse(tbId.Text);
+                using(GestionEmpleadosEntities1 db = new GestionEmpleadosEntities1())
+                {
+                    var objeto = db.Empleados.Find(id);
+                    db.Empleados.Remove(objeto);
+                    db.SaveChanges();
+                    Limpiar();
+                    LlenarTabla();
+                    TablaContenido.ClearSelection();
+                }
+                MessageBox.Show("Se eliminó el Empleado");
+            }
+            else
+            {
+
+            }
         }
         //Botón Cancelar
         private void bCancelar_Click(object sender, EventArgs e)
@@ -101,10 +152,10 @@ namespace GestorEmpleados.PL
             bExaminar.Enabled = true;
             bGuardar.Visible = true;
             bExaminar.Visible = true;
-            AccionEditar = 0;
-            AccionEliminar = 0;
             ImagenGuardada = null;
             FotoEmpleado.Image=null;//Borrar Imagen del Elemento para la foto
+            bEditar.Enabled = false; bEditar.Visible = false;
+            bEliminar.Enabled = false; bEliminar.Visible = false;
         }
         //Método de selección del combobox departamento
         private void cbDepartamento_SelectedIndexChanged(object sender, EventArgs e)
@@ -124,12 +175,12 @@ namespace GestorEmpleados.PL
         private void TablaContenido_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             int indice = e.RowIndex;
-            var id = TablaContenido.Rows[indice].Cells[0].Value;
+            
             cbDepartamento.Enabled = true;
             CargarComboBoxEmpleado();
-            MemoryStream memoriafoto1 = new MemoryStream();
             if (indice >= 0)
             {
+                var id = TablaContenido.Rows[indice].Cells[0].Value;
                 using (GestionEmpleadosEntities1 db = new GestionEmpleadosEntities1())
                 {
                     var contenido = db.Empleados.Find(id);
@@ -144,6 +195,9 @@ namespace GestorEmpleados.PL
                     tbNombre.Text = contenido.Nombre;
                     tbCorreo.Text=contenido.Correo;
                 }
+                bEditar.Enabled = true; bEditar.Visible = true;
+                bEliminar.Enabled = true; bEliminar.Visible = true;
+                bGuardar.Enabled = false; bGuardar.Visible = false;
             }
             else TablaContenido.ClearSelection();
         }
@@ -152,8 +206,10 @@ namespace GestorEmpleados.PL
         {
             using (GestionEmpleadosEntities1 db = new GestionEmpleadosEntities1())
             {
-                var tabla = from d in db.Empleados select new {d.Id,d.Nombre,
-                    apellidocompleto = d.ApellidoPaterno +" " + d.ApellidoMaterno,d.Correo};
+                var tabla = from d in db.Empleados join e in db.Departamentos 
+                            on d.IdDepartamento equals e.Id
+                            select new {d.Id,d.Nombre,
+                    apellidocompleto = d.ApellidoPaterno +" " + d.ApellidoMaterno,d.Correo,e.Departamento};
                 TablaContenido.DataSource= tabla.ToList();
             }
         }
@@ -165,6 +221,7 @@ namespace GestorEmpleados.PL
             TablaContenido.Columns[1].HeaderText = "Nombre";
             TablaContenido.Columns[2].HeaderText = "Apellidos";
             TablaContenido.Columns[3].HeaderText = "Correo Electronico";
+            TablaContenido.Columns[4].HeaderText = "Departamento";
             CargarComboBoxEmpleado();
             bEditar.Enabled = false;
             bEditar.Visible = false;
@@ -179,10 +236,17 @@ namespace GestorEmpleados.PL
             escogerimagen.Title = "Seleccionar una imagen";
             if (escogerimagen.ShowDialog() == DialogResult.OK)//Si ya seleccionó la imagen
             {
+                try
+                {
                 FotoEmpleado.Image = Image.FromStream(escogerimagen.OpenFile());
                 MemoryStream memoriafoto = new MemoryStream();
                 FotoEmpleado.Image.Save(memoriafoto,System.Drawing.Imaging.ImageFormat.Png);//Formato de la imagen
                 ImagenGuardada = memoriafoto.ToArray();//pasar la foto a una variable global
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Archivo no compatible");
+                }
             }
         }
     }
